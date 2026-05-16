@@ -3,8 +3,6 @@ const Loan = require('../models/Loan')
 const auth = require('../middleware/auth')
 const { calculateCreditScore } = require('../services/creditScore')
 const { generateSchedule } = require('../utils/generateSchedule')
-
-// POST /api/loans/apply
 router.post('/apply', auth, async (req, res) => {
   try {
     const {
@@ -38,8 +36,6 @@ router.post('/apply', auth, async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 })
-
-// GET /api/loans/my
 router.get('/my', auth, async (req, res) => {
   try {
     const loans = await Loan.find({ user: req.user.id }).sort({ createdAt: -1 })
@@ -48,8 +44,6 @@ router.get('/my', auth, async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 })
-
-// GET /api/loans/stats
 router.get('/stats', auth, async (req, res) => {
   try {
     const loans = await Loan.find({ user: req.user.id })
@@ -62,8 +56,6 @@ router.get('/stats', auth, async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 })
-
-// GET /api/loans/:id
 router.get('/:id', auth, async (req, res) => {
   try {
     const loan = await Loan.findOne({ _id: req.params.id, user: req.user.id })
@@ -73,8 +65,6 @@ router.get('/:id', auth, async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 })
-
-// GET /api/loans/:id/schedule
 router.get('/:id/schedule', auth, async (req, res) => {
   try {
     const loan = await Loan.findOne({ _id: req.params.id, user: req.user.id })
@@ -84,8 +74,6 @@ router.get('/:id/schedule', auth, async (req, res) => {
     res.status(500).json({ error: err.message })
   }
 })
-
-// PATCH /api/loans/:id/repay/:emiIndex
 router.patch('/:id/repay/:emiIndex', auth, async (req, res) => {
   try {
     const loan = await Loan.findOne({ _id: req.params.id, user: req.user.id })
