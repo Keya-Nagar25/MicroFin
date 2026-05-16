@@ -5,7 +5,7 @@ function calculateCreditScore({ monthlyRevenue, loanAmount, bizAgeMonths,
   const dti       = Math.round(Math.max(0, Math.min(30, (1 - r) * 30)));
   const txScore   = Math.round(Math.min(20, (monthlyTxns / 200) * 20));
   const bizScore  = Math.round(Math.min(15, (bizAgeMonths / 60) * 15));
-  const digScore  = Math.round((digitalUsage / 3) * 15);  // 1=low,2=med,3=high
+  const digScore  = Math.round((digitalUsage / 3) * 15);  
   const repScore  = Math.round((repaymentHistory / 3) * 10);
   const gstScore  = Math.round((gstFiling / 2) * 10);
   const penalty   = defaults === 1 ? 10 : defaults >= 2 ? 25 : 0;
