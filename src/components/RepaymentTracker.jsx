@@ -34,7 +34,6 @@ export default function RepaymentTracker({ loanId, emi, amount }) {
 
   return (
     <div className="space-y-5">
-      {/* Summary bar */}
       <div className="bg-gray-800 rounded-xl p-5">
         <div className="flex justify-between text-sm text-gray-400 mb-2">
           <span>{paidCount} of {schedule.length} EMIs paid</span>
@@ -48,8 +47,6 @@ export default function RepaymentTracker({ loanId, emi, amount }) {
           <span>{fmtINR(totalInterest)} total interest</span>
         </div>
       </div>
-
-      {/* Dot calendar */}
       <div className="flex flex-wrap gap-2">
         {schedule.map((e, i) => {
           const st = emiStatus(e)
@@ -72,8 +69,6 @@ export default function RepaymentTracker({ loanId, emi, amount }) {
           </span>
         ))}
       </div>
-
-      {/* Schedule table */}
       <div className="overflow-x-auto rounded-xl border border-gray-700">
         <table className="w-full text-sm">
           <thead className="bg-gray-800 text-gray-400 text-xs uppercase">
