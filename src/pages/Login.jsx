@@ -4,7 +4,7 @@ import { login as loginApi, register as registerApi } from '../services/auth'
 import { useAuth } from '../context/AuthContext'
 
 export default function Login() {
-  const [mode, setMode]   = useState('login')   // 'login' | 'register'
+  const [mode, setMode]   = useState('login')   
   const [form, setForm]   = useState({ name: '', email: '', password: '' })
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
