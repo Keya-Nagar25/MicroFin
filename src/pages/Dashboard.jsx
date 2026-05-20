@@ -20,7 +20,6 @@ export default function Dashboard() {
       .then(([l, s]) => { setLoans(l.data); setStats(s.data) })
       .finally(() => setLoading(false))
   }, [isLoggedIn])
-
   if (!isLoggedIn) {
     return (
       <div className="max-w-md mx-auto p-8 text-center">
@@ -31,7 +30,6 @@ export default function Dashboard() {
       </div>
     )
   }
-
   const chartData = loans.map(l => ({
     name: l.businessName?.slice(0, 10) || 'Loan',
     amount: l.amount,
@@ -53,8 +51,6 @@ export default function Dashboard() {
       ) : (
         <>
           <DashboardStats stats={stats} loans={loans} />
-
-          {/* Chart */}
           {chartData.length > 0 && (
             <div className="bg-gray-800 rounded-xl p-6 mb-8">
               <h3 className="text-lg font-semibold text-white mb-4">Loan vs repayment</h3>
@@ -72,14 +68,10 @@ export default function Dashboard() {
               </ResponsiveContainer>
             </div>
           )}
-
-          {/* Loan history table */}
           <div className="mb-8">
             <h3 className="text-lg font-semibold text-white mb-4">All loans</h3>
             <TransactionHistory loans={loans} />
           </div>
-
-          {/* Repayment tracker */}
           {loans.length > 0 && (
             <div>
               <div className="flex items-center gap-4 mb-4">
